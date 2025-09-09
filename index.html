@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <script>
-    window.onload = function () {
-      let targetUrl = window.location.hash.substring(1); // get everything after #
+     window.onload = function () {
+      // Get current URL parameters
+      const params = new URLSearchParams(window.location.search);
 
+      // Extract "id" parameter
+      const targetUrl = params.get("u");
+
+      // Redirect if valid
       if (targetUrl) {
+        targetUrl = decodeURIComponent(targetUrl);
+        // Basic safety: allow only http/https URLs
         if (targetUrl.startsWith("http://") || targetUrl.startsWith("https://")) {
-          window.location.replace(targetUrl);
+          window.location.href = targetUrl;
         } else {
           document.body.innerHTML = "<h2>Invalid URL.</h2>";
         }
