@@ -10,6 +10,8 @@
       // Extract "id" parameter
       let targetUrl = decodeURIComponent(params.get("id"));
 
+      let targetUrl = window.location.hash.substring(1); // get everything after #
+
       // Redirect if valid
       if (targetUrl) {
         // Basic safety: allow only http/https URLs
