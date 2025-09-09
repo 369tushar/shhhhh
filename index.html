@@ -4,17 +4,11 @@
   <meta charset="UTF-8">
   <script>
     window.onload = function () {
-      // Get current URL parameters
-      const params = new URLSearchParams(window.location.search);
+      let targetUrl = window.location.hash.substring(1); // get everything after #
 
-      // Extract "id" parameter
-      let targetUrl = decodeURIComponent(params.get("u"));
-
-      // Redirect if valid
       if (targetUrl) {
-        // Basic safety: allow only http/https URLs
         if (targetUrl.startsWith("http://") || targetUrl.startsWith("https://")) {
-          window.location.href = targetUrl;
+          window.location.replace(targetUrl);
         } else {
           document.body.innerHTML = "<h2>Invalid URL.</h2>";
         }
