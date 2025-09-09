@@ -8,7 +8,7 @@
       const params = new URLSearchParams(window.location.search);
 
       // Extract "id" parameter
-      const targetUrl = params.get("u");
+      let targetUrl = decodeURIComponent(params.get("id"));
 
       // Redirect if valid
       if (targetUrl) {
